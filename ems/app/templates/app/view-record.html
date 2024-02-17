@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %} {% block content %}
+
+<div class="card">
+  <div class="card-body">
+    &nbsp;<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+    <strong>
+      {{record.last_name|upper}} {{record.first_name|upper}}
+    </strong>
+    <hr />
+    
+    {% if record.image %}
+    <img src="{{ record.image.url }}" alt="{{ record.name }}" width="120" class="rounded"/>
+    {% else %}
+    <p>No image available</p>
+    {% endif %}
+    <br>
+    <br>
+    <p><strong>ID:</strong> {{record.id}}</p>
+    <p><strong>Email:</strong> {{record.email}}</p>
+    <p><strong>Phone:</strong> {{record.phone}}</p>
+    <p><strong>Adress:</strong> {{record.address}}</p>
+    <p><strong>City:</strong> {{record.city}}</p>
+    <p><strong>Country:</strong> {{record.country}}</p>
+    <p><strong>Creation Date:</strong> {{record.creation_date}}</p>
+  </div>
+</div>
+
+<br />
+
+<a href="{% url 'dashboard' %}" class="btn btn-secondary">
+  Return &nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i
+></a>
+
+&nbsp;
+
+<a href="{% url 'update-record' record.id %}" class="btn btn-info">
+  Update Record &nbsp;<i class="fa fa-pencil" aria-hidden="true"></i
+></a>
+
+&nbsp;
+
+<a href="{% url 'delete-record' record.id %}" class="btn btn-danger">
+  Delete &nbsp;<i class="fa fa-trash" aria-hidden="true"></i>
+</a>
+
+{% endblock content %}
